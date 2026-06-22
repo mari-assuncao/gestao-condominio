@@ -1,16 +1,21 @@
 package Entity;
-
 import java.time.LocalDate;
 
 public class Dependente extends Pessoa {
-    private String responsavel; // colocar cpf do condomino?
-
-    public Dependente(String nome, String cpf, LocalDate dataNascimento, String responsavel) {
+    //ATRIBUTOS
+    private Condomino responsavel; // colocar cpf do condomino?
+    
+    //CONSTRUTOR
+    public Dependente(String nome, String cpf, LocalDate dataNascimento, Condomino responsavel){
         super(nome, cpf, dataNascimento);
         this.responsavel = responsavel;
     }
 
-    public String getResponsavel() {
+    //GETTERS E SETTERS
+    public Condomino getResponsavel(){
         return responsavel;
+    }
+    public void setResponsavel(Condomino responsavel){
+        this.responsavel = responsavel;
     }
 }
