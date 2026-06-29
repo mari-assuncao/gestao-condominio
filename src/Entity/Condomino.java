@@ -2,6 +2,8 @@ package Entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import Exception.CapacidadeExcedidaException;
+
 
 public class Condomino extends Pessoa implements IRelatorio{
     //ATRIBUTOS
@@ -26,11 +28,30 @@ public class Condomino extends Pessoa implements IRelatorio{
         System.out.println("Quantidade de dependentes: " + this.dependentes.size());
         System.out.println("Total de Apartamentos: " + this.apartamentos.size());
         System.out.println("Total de pagamentos realizados: " + this.pagamentos.size());
+        System.out.println("Status financeiro: " + (isInadimplente() ? "INADIMPLENTE" : "Em dia"));
         System.out.println("--------------------------------------------------------");
     }
 
-    public void adicionarDependente(Dependente dependente){
+    public void adicionarDependente(Dependente dependente) throws CapacidadeExcedidaException {
+        if (!apartamentos.isEmpty()) {
+            Apartamento ap = apartamentos.get(0);
+            if (1 + this.dependentes.size() + 1 > ap.getLimiteMoradores()) {
+                throw new CapacidadeExcedidaException(
+                    "Limite de moradores do apartamento " + ap.getNumero() +
+                    " (" + ap.getLimiteMoradores() + ") seria excedido."
+                );
+            }
+        }
         this.dependentes.add(dependente);
+    }
+
+    public boolean isInadimplente() {
+        for (Pagamento pagamento : pagamentos) {
+            if (pagamento.isAtrasado()) {
+                return true;
+            }
+        }
+        return false; 
     }
 
     // GETTERS E SETTERS
