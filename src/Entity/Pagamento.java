@@ -34,7 +34,7 @@ import java.time.LocalDate;
 
 
         public boolean isAtrasado() {
-            return LocalDate.now().compareTo(dataVencimento) > 0;
+            return LocalDate.now().isAfter(dataVencimento);
         }
 
         public double getValorBase() {
