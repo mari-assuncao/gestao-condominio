@@ -1,8 +1,8 @@
 package Entity;
+import Exception.CapacidadeExcedidaException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import Exception.CapacidadeExcedidaException;
 
 
 public class Condomino extends Pessoa implements IRelatorio{
