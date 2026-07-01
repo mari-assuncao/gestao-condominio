@@ -1,34 +1,49 @@
+// Entity/AreaComum.java
 package Entity;
 
+import java.util.Objects;
+
 public class AreaComum {
-    private static int proximoId = 1;
-    private int id;
+    //ATRIBUTOS
     private String nome;
     private int capacidadeMaxima;
 
+    //CONSTRUTOR
     public AreaComum(String nome, int capacidadeMaxima) {
-        this.id = proximoId++;
         this.nome = nome;
         this.capacidadeMaxima = capacidadeMaxima;
     }
 
-    public int getId() {
-        return id;
+    //GETTERS E SETTERS
+    public String getNome(){
+         return nome;
+         }
+    public void setNome(String nome){
+         this.nome = nome;
+         }
+    public int getCapacidadeMaxima(){
+         return capacidadeMaxima;
+         }
+    public void setCapacidadeMaxima(int capacidadeMaxima){
+         this.capacidadeMaxima = capacidadeMaxima;
+         }
+
+         //MÉTODOS
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AreaComum)) return false;
+        AreaComum other = (AreaComum) o;
+        return Objects.equals(nome, other.nome);
     }
 
-    public String getNome() {
-        return nome;
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getCapacidadeMaxima() {
-        return capacidadeMaxima;
-    }
-
-    public void setCapacidadeMaxima(int capacidadeMaxima) {
-        this.capacidadeMaxima = capacidadeMaxima;
+    @Override
+    public String toString() {
+        return "AreaComum{nome='" + nome + "', capacidade=" + capacidadeMaxima + "}";
     }
 }
