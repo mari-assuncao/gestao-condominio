@@ -75,4 +75,12 @@ public class Condomino extends Pessoa implements IRelatorio{
     public void setPagamentos(List<Pagamento> pagamentos){
         this.pagamentos = pagamentos;
     }
+    public void adicionarApartamento(Apartamento apartamento) {
+        this.apartamentos.add(apartamento);
+    }
+
+    public void adicionarPagamento(Pagamento pagamento) {
+        this.pagamentos.add(pagamento);
+    }
+
 }
