@@ -14,7 +14,8 @@ import java.time.LocalDate;
             this.valorBase = valorBase;
             this.dataVencimento = dataVencimento;
         }
-
+        
+        //MÉTODOS
         public double calcularValorFinal() {
             if (isAtrasado()) {
                 return valorBase + (valorBase * taxaJuros);
@@ -32,11 +33,13 @@ import java.time.LocalDate;
             System.out.println("--------------------------------------------------------");
         }
 
-
         public boolean isAtrasado() {
             return LocalDate.now().isAfter(dataVencimento);
         }
 
+
+
+        // GETTERS E SETTERS
         public double getValorBase() {
             return valorBase;
         }

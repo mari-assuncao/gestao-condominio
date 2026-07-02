@@ -1,4 +1,3 @@
-// Entity/AreaComum.java
 package Entity;
 
 import java.util.Objects;
@@ -28,7 +27,7 @@ public class AreaComum {
          this.capacidadeMaxima = capacidadeMaxima;
          }
 
-         //MÉTODOS
+    //MÉTODOS
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -7,7 +7,6 @@ import Entity.ReservaAreaComum;
 import Exception.CapacidadeExcedidaException;
 import Exception.InadimplenciaException;
 import Exception.ReservaDuplicadaException;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,17 +18,17 @@ public class Main {
 
         System.out.println("======= SISTEMA DE GESTÃO DE CONDOMÍNIO =======\n");
 
-        //Cadastro de condôminos
+        // CONDÔMINOS
         Condomino Joao = new Condomino("João Pereira", "111.222.333-44", LocalDate.of(1985, 4, 12));
         Condomino Marina = new Condomino("Marina Souza", "555.666.777-88", LocalDate.of(1990, 9, 23));
 
-        //Cadastro de apartamentos
+        // APARTAMENTOS
         Apartamento apto101 = new Apartamento(101, 4, Joao);  
         Apartamento apto202 = new Apartamento(202, 2, Marina);
         Joao.adicionarApartamento(apto101);
         Marina.adicionarApartamento(apto202);
 
-        //Cadastro de dependentes
+        // DEPENDENTES
         System.out.println("--- Cadastrando dependentes ---");
         try {
             Dependente filhoJoao = new Dependente("Lucas Pereira", "222.333.444-55", LocalDate.of(2015, 6, 1), Joao);
@@ -49,7 +48,7 @@ public class Main {
             System.out.println("Erro ao cadastrar dependente: " + e.getMessage());
         }
 
-        //PAGAMENTOS
+        // PAGAMENTOS
         System.out.println("\n--- Registrando pagamentos ---");
         Joao.adicionarPagamento(new Pagamento(950.0, LocalDate.now().plusDays(10))); // em dia
         Marina.adicionarPagamento(new Pagamento(950.0, LocalDate.now().minusDays(7))); // atrasado
@@ -61,13 +60,13 @@ public class Main {
             pagamento.gerarRelatorio();
         }
 
-         // ÁREAS COMUNS
+        // ÁREAS COMUNS
         AreaComum salaoFestas = new AreaComum("Salão de Festas", 50);
         AreaComum churrasqueira = new AreaComum("Churrasqueira", 15);
 
         List<ReservaAreaComum> reservasConfirmadas = new ArrayList<>();
 
-            // RESERVA BEM SUCEDIDA (PAGAMENTO OK)
+        // RESERVA BEM SUCEDIDA (PAGAMENTO OK)
         System.out.println("\n--- Tentando reserva 1: João no Salão de Festas ---");
         ReservaAreaComum reserva1 = new ReservaAreaComum(
             LocalDateTime.of(2026, 8, 15, 19, 0), Joao, salaoFestas, 30
@@ -80,7 +79,7 @@ public class Main {
             System.out.println("Reserva negada: " + e.getMessage());
         }
 
-         //RESERVA MAL SUCEIDA (CALOTEIRA)
+        // RESERVA MAL SUCEDIDA (CALOTEIRA)
         System.out.println("\n--- Tentando reserva 2: Marina (inadimplente) na Churrasqueira ---");
         ReservaAreaComum reserva2 = new ReservaAreaComum(
             LocalDateTime.of(2026, 8, 20, 12, 0), Marina, churrasqueira, 10
@@ -93,7 +92,7 @@ public class Main {
             System.out.println("Reserva negada: " + e.getMessage());
         }
 
-        //CAPACIDADE EXCEDIDA
+        // CAPACIDADE EXCEDIDA
         System.out.println("\n--- Tentando reserva 3: João excede capacidade da Churrasqueira ---");
         ReservaAreaComum reserva3 = new ReservaAreaComum(
             LocalDateTime.of(2026, 9, 1, 12, 0), Joao, churrasqueira, 25 // > 15
@@ -106,7 +105,7 @@ public class Main {
             System.out.println("Reserva negada: " + e.getMessage());
         }
 
-                //RESERVA DUPLICADA
+        // RESERVA DUPLICADA
         System.out.println("\n--- Tentando reserva 4: outro condômino no mesmo horário do Salão ---");
         ReservaAreaComum reserva4 = new ReservaAreaComum(
             LocalDateTime.of(2026, 8, 15, 19, 0), Marina, salaoFestas, 5

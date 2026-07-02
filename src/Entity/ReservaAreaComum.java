@@ -1,4 +1,3 @@
-// Entity/ReservaAreaComum.java
 package Entity;
 
 import Exception.CapacidadeExcedidaException;
@@ -9,8 +8,8 @@ import java.util.List;
 
 public class ReservaAreaComum {
     private LocalDateTime dataReserva;
-    private Condomino solicitante;   // antes: String cpfSolicitante
-    private AreaComum area;          // antes: int idArea
+    private Condomino solicitante;   
+    private AreaComum area;          
     private int numConvidados;
 
     public ReservaAreaComum(LocalDateTime dataReserva, Condomino solicitante,
@@ -51,6 +50,8 @@ public class ReservaAreaComum {
         }
     }
 
+
+    // GETTERS E SETTERS
     public LocalDateTime getDataReserva() {
         return dataReserva;
     }

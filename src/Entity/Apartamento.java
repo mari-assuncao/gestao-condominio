@@ -1,4 +1,3 @@
-// Entity/Apartamento.java
 package Entity;
 
 public class Apartamento {
