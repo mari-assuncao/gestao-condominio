@@ -21,7 +21,17 @@ public class ReservaAreaComum {
         this.numConvidados = numConvidados;
     }
 
-
+    /**
+     * Confirma a solicitação de reserva de uma área comum do condomínio.
+     * Este método valida três regras de negócio cruciaais antes de aprovar:
+     * a situação financeira do solicitante, a capacidade física do local 
+     * e a disponibilidade de agenda.
+     *
+     * @param reservasExistentes a lista do banco de dados contendo todas as reservas já confirmadas
+     * @throws InadimplenciaException se o condômino possuir qualquer pagamento com status atrasado
+     * @throws CapacidadeExcedidaException se a quantidade de convidados ultrapassar o limite da área solicitada
+     * @throws ReservaDuplicadaException se a área solicitada já possuir uma reserva para a mesma data e horário
+     */
     public void confirmarReserva(List<ReservaAreaComum> reservasExistentes)
             throws InadimplenciaException, CapacidadeExcedidaException, ReservaDuplicadaException {
 
